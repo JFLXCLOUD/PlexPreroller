@@ -1,0 +1,1 @@
+<content of storage.js from previous message>
