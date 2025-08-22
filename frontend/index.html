@@ -1,1 +1,62 @@
-<content of index.html from previous message>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Plex Pre-Roll Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; margin: 40px; }
+      header { display:flex; align-items:center; gap:12px; margin-bottom:24px; }
+      .row { display:flex; gap:24px; align-items:flex-start; }
+      .panel { border: 1px solid #ddd; border-radius: 10px; padding: 16px; flex:1; }
+      ul { list-style: none; padding: 0; }
+      li { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed #eee; }
+      .btn { cursor:pointer; border:1px solid #ccc; border-radius:8px; padding:8px 12px; background:#fff; }
+      .btn.primary { border-color:#000; }
+      input[type="file"] { display:block; margin-top:8px; }
+      .chips { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+      .chip { border:1px solid #ddd; padding:4px 8px; border-radius:999px; cursor:pointer; }
+      .chip.selected { background:#000; color:#fff; border-color:#000; }
+      .muted { color:#666; font-size:12px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>🎬 Plex Pre-Roll Manager</h1>
+      <div class="muted">MVP</div>
+    </header>
+
+    <div class="row">
+      <div class="panel">
+        <h3>Connect</h3>
+        <input id="apiKey" placeholder="API Key" />
+        <button class="btn" onclick="saveKey()">Save</button>
+        <p class="muted">Set <code>ADMIN_API_KEY</code> in backend and paste it here.</p>
+      </div>
+
+      <div class="panel">
+        <h3>Upload Preroll</h3>
+        <input type="file" id="file" accept="video/*" />
+        <button class="btn primary" onclick="upload()">Upload</button>
+      </div>
+
+      <div class="panel">
+        <h3>Actions</h3>
+        <div class="chips">
+          <div class="chip" onclick="applySelected()">Apply Selected</div>
+          <div class="chip" onclick="applyRandom(1)">Random (1)</div>
+          <div class="chip" onclick="applyRandom(2)">Random (2)</div>
+          <div class="chip" onclick="clearAll()">Clear</div>
+          <div class="chip" onclick="refresh()">Refresh Plex</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:24px;">
+      <h3>Prerolls</h3>
+      <ul id="list"></ul>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
