@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node src/main.js",
-    "build": "pkg . --targets node18-win-x64 --output plexpreroller.exe",
+    "build": "pkg . --targets node18-linux-x64 --output plexpreroller",
+    "build-windows": "pkg . --targets node18-win-x64 --output plexpreroller.exe",
     "dev": "nodemon src/main.js"
   },
   "dependencies": {
