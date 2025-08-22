@@ -30,14 +30,6 @@ Copy the example env file and set values:
 cp backend/.env.example backend/.env
 ```
 
-Example values:
-```env
-PLEX_BASE_URL=http://your-plex:32400
-PLEX_TOKEN=xxxxxxxxxxxx
-ADMIN_API_KEY=changeme
-PREROLL_DIR=/app/prerolls
-```
-
 ### 3. Run with Docker
 ```bash
 docker-compose up --build -d
@@ -46,6 +38,29 @@ docker-compose up --build -d
 The UI will be available at:
 
 http://localhost:8080
+
+---
+
+## Environment Variables
+
+The backend uses a few required environment variables. Copy `.env.example` to `.env` and set your values:
+
+| Variable       | Example                       | Description |
+|----------------|-------------------------------|-------------|
+| `PLEX_BASE_URL` | `http://192.168.1.50:32400`   | The base URL of your Plex Media Server. Default Plex port is `32400`. Use `http://host.docker.internal:32400` if running Plex locally with Docker. |
+| `PLEX_TOKEN`    | `xxxxxxxxxxxx`                | Your Plex API token (X-Plex-Token). Required to allow PlexPreroller to update Plex preferences. |
+| `ADMIN_API_KEY` | `changeme`                    | Secret key for authenticating with the PlexPreroller API and UI. Change this to a long random string. |
+| `PREROLL_DIR`   | `/app/prerolls`               | Directory inside the container where preroll videos are stored. In Docker you should map this to a local folder (e.g. `./prerolls:/app/prerolls`). |
+
+---
+
+### Getting your Plex Token
+
+1. Open Plex Web and log in.  
+2. Open **Developer Tools → Network** in your browser.  
+3. Perform an action (e.g. refresh libraries).  
+4. Look for requests containing `X-Plex-Token=...` in the URL.  
+5. Copy the token value and paste it into `.env`.  
 
 ---
 
