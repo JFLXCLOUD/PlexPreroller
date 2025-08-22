@@ -1,1 +1,25 @@
-<content of docker-compose.yml from previous message>
+version: "3.8"
+services:
+  preroll-manager:
+    build: .
+    container_name: plex-preroll-manager
+    environment:
+      - PLEX_BASE_URL=${PLEX_BASE_URL}
+      - PLEX_TOKEN=${PLEX_TOKEN}
+      - PLEX_SECTION_IDS=${PLEX_SECTION_IDS}
+      - PREROLL_DIR=/app/prerolls
+      - ADMIN_API_KEY=${ADMIN_API_KEY}
+      - CORS_ORIGIN=${CORS_ORIGIN:-http://localhost:8080}
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./prerolls:/app/prerolls
+      - ./backend/.env:/app/backend/.env:ro
+  # Optional static UI (serve frontend without a dev server)
+  frontend:
+    image: nginx:alpine
+    container_name: preroll-frontend
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    ports:
+      - "8080:80"
