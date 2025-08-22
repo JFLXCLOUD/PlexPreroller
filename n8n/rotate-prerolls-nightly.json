@@ -1,1 +1,55 @@
-<content of rotate-prerolls-nightly.json from previous message>
+{
+  "name": "Rotate Plex Prerolls Nightly",
+  "nodes": [
+    {
+      "parameters": { "triggerTimes": { "item": [{ "hour": 3, "minute": 30 }]} },
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [200, 200],
+      "id": "Cron"
+    },
+    {
+      "parameters": {
+        "url": "http://preroll-manager:8088/api/apply/random",
+        "options": {},
+        "sendBody": true,
+        "jsonParameters": true,
+        "authentication": "genericAuth",
+        "genericAuthType": "headerAuth"
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [500, 200],
+      "id": "ApplyRandom",
+      "credentials": {
+        "httpHeaderAuth": {
+          "apiKey": "x-api-key",
+          "name": "x-api-key",
+          "value": "REPLACE_WITH_ADMIN_API_KEY"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "http://preroll-manager:8088/api/refresh",
+        "jsonParameters": true,
+        "sendBody": true,
+        "options": {},
+        "authentication": "genericAuth",
+        "genericAuthType": "headerAuth"
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [800, 200],
+      "id": "Refresh",
+      "credentials": {
+        "httpHeaderAuth": {
+          "apiKey": "x-api-key",
+          "name": "x-api-key",
+          "value": "REPLACE_WITH_ADMIN_API_KEY"
+        }
+      }
+    }
+  ],
+  "connections": { "ApplyRandom": { "main": [[{ "node": "Refresh", "type": "main", "index": 0 }]] } }
+}
