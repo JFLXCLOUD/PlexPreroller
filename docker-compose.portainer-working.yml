@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  plexpreroller:
+    image: jbrns/plexpreroller:latest
+    container_name: plexpreroller
+    environment:
+      - PLEX_BASE_URL=http://192.168.1.50:32400
+      - PLEX_TOKEN=your_actual_plex_token_here
+      - PLEX_SECTION_IDS=1,2,3
+      - PREROLL_DIR=/app/prerolls
+      - ADMIN_API_KEY=your_secure_key_here
+      - CORS_ORIGIN=http://192.168.1.249:8088
+      - PORT=8080
+      - HOST=0.0.0.0
+    ports:
+      - "0.0.0.0:8088:8080"
+    volumes:
+      - prerolls_data:/app/prerolls
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8088/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  prerolls_data: 

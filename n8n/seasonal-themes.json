@@ -1,0 +1,9 @@
+{
+  "name": "Seasonal Preroll Themes",
+  "nodes": [
+    { "parameters": { "triggerTimes": { "item": [{ "hour": 4, "minute": 0 }]} }, "type": "n8n-nodes-base.cron", "typeVersion": 1, "position": [200, 200], "id": "Cron" },
+    { "parameters": { "functionCode": "const m = new Date().getMonth() + 1;\nlet count = 1;\nif (m === 10) count = 2; // October: spooky bumpers\nif (m === 12) count = 2; // December: holiday bumpers\nreturn [{ json: { count } }];" }, "type": "n8n-nodes-base.function", "typeVersion": 2, "position": [460, 200], "id": "Fn" },
+    { "parameters": { "url": "http://preroll-manager:8088/api/apply/random", "jsonParameters": true, "sendBody": true, "options": {}, "authentication": "genericAuth", "genericAuthType": "headerAuth", "options.bodyContentType": "json" }, "type": "n8n-nodes-base.httpRequest", "typeVersion": 4, "position": [760, 200], "id": "Apply", "credentials": { "httpHeaderAuth": { "apiKey": "x-api-key", "name": "x-api-key", "value": "REPLACE_WITH_ADMIN_API_KEY" } } }
+  ],
+  "connections": { "Fn": { "main": [[{ "node": "Apply", "type": "main", "index": 0 }]] } }
+}
