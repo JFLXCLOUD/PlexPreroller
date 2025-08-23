@@ -2,14 +2,16 @@
 
 ## Quick Installation
 
-1. **Download** `plexpreroller-windows-v2.zip`
+1. **Download** `plexpreroller-windows-v3.zip`
 2. **Extract** to a folder of your choice
 3. **Edit** `config.env` with your Plex settings
 4. **Double-click** `launcher.bat` to start the application
 5. **Open** http://localhost:8088 in your browser
 
-## What's New in v2
+## What's New in v3
 
+- **Fixed module loading issues** - resolves "Cannot find module" errors
+- **Converted to CommonJS** - better compatibility with pkg bundler
 - **Improved launcher** with error checking and better user experience
 - **Configuration validation** - checks for required files before starting
 - **Clear instructions** - shows exactly what to do if something is missing
