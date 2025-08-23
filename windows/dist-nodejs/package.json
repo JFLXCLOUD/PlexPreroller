@@ -1,0 +1,22 @@
+{
+  "name": "plexpreroller-nodejs",
+  "version": "1.0.0",
+  "description": "PlexPreroller Node.js Version",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node main.js",
+    "install-deps": "npm install"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "formidable": "^3.5.2",
+    "mime-types": "^2.1.35",
+    "node-fetch": "^3.3.2",
+    "fs-extra": "^11.2.0"
+  },
+  "author": "JFLXCLOUD",
+  "license": "MIT"
+}

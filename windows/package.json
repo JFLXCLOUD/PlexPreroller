@@ -2,9 +2,10 @@
   "name": "plexpreroller-windows",
   "version": "1.0.0",
   "description": "PlexPreroller Windows Application",
-  "main": "src/main.cjs",
+  "main": "src/main.js",
+  "type": "commonjs",
   "scripts": {
-    "start": "node src/main.cjs",
+    "start": "node src/main.js",
     "build": "pkg . --targets node18-linux-x64 --output plexpreroller",
     "build-windows": "pkg . --targets node18-win-x64 --output plexpreroller.exe",
     "dev": "nodemon src/main.js",
@@ -30,12 +31,13 @@
       "frontend/**/*"
     ],
     "scripts": [
-      "src/**/*.js"
+      "src/main.js",
+      "src/storage.js",
+      "src/plex.js"
     ],
     "targets": [
       "node18-win-x64"
-    ],
-    "outputPath": "dist"
+    ]
   },
-  "bin": "src/main.cjs"
+  "bin": "src/main.js"
 }
