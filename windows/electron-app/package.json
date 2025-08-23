@@ -1,0 +1,49 @@
+{
+  "name": "plexpreroller-desktop",
+  "version": "1.0.0",
+  "description": "PlexPreroller Desktop Application",
+  "main": "tray-app.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "dist": "electron-builder --publish=never"
+  },
+  "dependencies": {
+    "electron": "^28.0.0"
+  },
+  "devDependencies": {
+    "electron-builder": "^24.6.4"
+  },
+  "build": {
+    "appId": "com.jflxcloud.plexpreroller",
+    "productName": "PlexPreroller",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "tray-app.js",
+      "plexpreroller.exe",
+      "config.env",
+      "frontend/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "PlexPreroller"
+    }
+  },
+  "author": "JFLXCLOUD",
+  "license": "MIT"
+}

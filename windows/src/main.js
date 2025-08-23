@@ -9,6 +9,25 @@ import storage from "./storage.js";
 import plex from "./plex.js";
 import formidable from "formidable";
 
+// Windows Service Support
+let isService = false;
+if (process.argv.includes('--install-service')) {
+    console.log('Installing Windows Service...');
+    // Service installation logic would go here
+    process.exit(0);
+}
+
+if (process.argv.includes('--uninstall-service')) {
+    console.log('Uninstalling Windows Service...');
+    // Service uninstallation logic would go here
+    process.exit(0);
+}
+
+if (process.argv.includes('--service')) {
+    isService = true;
+    console.log('Running as Windows Service...');
+}
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const app = express();

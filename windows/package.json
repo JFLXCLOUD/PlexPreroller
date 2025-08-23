@@ -8,7 +8,9 @@
     "start": "node src/main.js",
     "build": "pkg . --targets node18-linux-x64 --output plexpreroller",
     "build-windows": "pkg . --targets node18-win-x64 --output plexpreroller.exe",
-    "dev": "nodemon src/main.js"
+    "dev": "nodemon src/main.js",
+    "install-service": "node service-wrapper.js",
+    "uninstall-service": "node -e \"require('node-windows').Service({name:'PlexPreroller',script:'src/main.js'}).uninstall()\""
   },
   "dependencies": {
     "express": "^4.19.2",
@@ -18,7 +20,8 @@
     "mime-types": "^2.1.35",
     "node-fetch": "^3.3.2",
     "fs-extra": "^11.2.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "node-windows": "^1.0.0-beta.8"
   },
   "devDependencies": {
     "pkg": "^5.8.1",

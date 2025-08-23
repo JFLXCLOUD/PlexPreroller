@@ -2,11 +2,18 @@
 
 ## Quick Installation
 
-1. **Download** `plexpreroller-windows.zip`
+1. **Download** `plexpreroller-windows-v2.zip`
 2. **Extract** to a folder of your choice
 3. **Edit** `config.env` with your Plex settings
-4. **Run** `plexpreroller.exe`
+4. **Double-click** `launcher.bat` to start the application
 5. **Open** http://localhost:8088 in your browser
+
+## What's New in v2
+
+- **Improved launcher** with error checking and better user experience
+- **Configuration validation** - checks for required files before starting
+- **Clear instructions** - shows exactly what to do if something is missing
+- **Better error messages** - helps users troubleshoot common issues
 
 ## Configuration
 
@@ -40,15 +47,15 @@ PORT=8088
 
 ## First Run
 
-### Option 1: Using the Batch File (Recommended)
-1. Double-click `run-plexpreroller.bat`
-2. Follow the prompts and press any key to start
+### Using the Launcher (Recommended)
+1. **Double-click** `launcher.bat`
+2. The launcher will check your configuration and start the server
 3. A console window will open showing the server status
-4. Open your browser to http://localhost:8088
-5. Enter your `ADMIN_API_KEY` in the web interface
-6. Start uploading and managing your prerolls!
+4. **Open your browser** to http://localhost:8088
+5. **Enter your `ADMIN_API_KEY`** in the web interface
+6. **Start uploading and managing** your prerolls!
 
-### Option 2: Command Line
+### Alternative: Direct Execution
 1. Open Command Prompt (cmd) or PowerShell
 2. Navigate to the folder: `cd C:\path\to\plexpreroller`
 3. Run: `plexpreroller.exe`
